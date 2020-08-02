@@ -8,7 +8,7 @@ router.post("/post", function (req, res) {
   console.log(req.body.numberPhone, req.body.messages);
   const client = twilio(
     (TWILIO_ACCOUNT_SID = "ACb20fe17df4390ea9b9b34562b92b6ee0"),
-    (TWILIO_AUTH_TOKEN = "2f23c96415fc84ba4bb7b6472ca201d7")
+    (TWILIO_AUTH_TOKEN = "b0a950f3e0be9d8625bb00b86542111c")
   );
   client.messages
     .create({
@@ -18,9 +18,12 @@ router.post("/post", function (req, res) {
     })
     .then((messages) => {
       console.log(messages);
+      res.json(messages);
     })
     .catch((err) => {
-      console.error(err);
+      console.error("ini error", err);
+      res.json(err);
+
     });
 });
 app.use(
